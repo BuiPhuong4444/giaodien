@@ -28,8 +28,8 @@
             android:layout_width="425dp"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Họ Tên"
             android:inputType="textPersonName"
-            android:text="Họ Tên"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="142dp" />
 
@@ -38,48 +38,48 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="phone"
-            android:text="SĐT" />
+            android:hint="SĐT"
+            android:inputType="phone" />
 
         <EditText
             android:id="@+id/editText5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textEmailAddress"
-            android:text="Email" />
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/editText6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPostalAddress"
-            android:text="Địa chỉ" />
+            android:hint="Địa chỉ"
+            android:inputType="textPostalAddress" />
 
         <EditText
             android:id="@+id/editText7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="date"
-            android:text="Ngày sinh" />
+            android:hint="Ngày sinh"
+            android:inputType="date" />
 
         <EditText
             android:id="@+id/editText8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="date"
-            android:text="Ngày tham gia" />
+            android:hint="Ngày tham gia"
+            android:inputType="date" />
 
         <EditText
             android:id="@+id/editText9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="number"
-            android:text="Lương cơ bản (tính theo ngày)" />
+            android:hint="Lương cơ bản (tính theo ngày)"
+            android:inputType="number" />
 
         <Button
             android:id="@+id/button3"

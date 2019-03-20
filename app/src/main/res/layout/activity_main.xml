@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="43dp"
             android:gravity="center"
-            android:text="Cài đặt mật khẩu"
+            android:text="Cài đặt mật khẩu (6 chữ số)"
             android:textSize="20dp" />
 
         <EditText
