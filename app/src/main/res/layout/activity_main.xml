@@ -9,8 +9,8 @@
 
     <LinearLayout
 
-        android:layout_width="336dp"
-        android:layout_height="568dp"
+        android:layout_width="341dp"
+        android:layout_height="421dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
@@ -19,8 +19,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent">
 
 
         <TextView
@@ -29,13 +28,15 @@
             android:layout_height="43dp"
             android:gravity="center"
             android:text="Cài đặt mật khẩu (6 chữ số)"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            />
 
         <EditText
             android:id="@+id/editSetMK"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10" />
+            android:ems="10"
+            android:inputType="numberPassword"/>
 
         <Button
             android:id="@+id/btnSetMK"

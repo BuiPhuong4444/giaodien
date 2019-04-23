@@ -3,6 +3,7 @@ package com.example.employeemanager;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -19,7 +20,8 @@ public class MenuActivity extends Activity {
             public void onClick(View v) {
                 //chuyen den ThemNV
                 Intent intent12= new Intent(MenuActivity.this, ThemNVActivity.class);
-                MenuActivity.this.startActivity(intent12);
+                startActivity(intent12);
+                Log.i("chuyển đến mh thêm","jid");
 
             }
         });
@@ -29,6 +31,8 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //chuyen den DSNV
+
+                //sau khi chon NV trong DS hien thi thong tin cua tung  NV
                 Intent intent13 = new Intent(MenuActivity.this, DSNVActivity.class);
                 MenuActivity.this.startActivity(intent13);
             }

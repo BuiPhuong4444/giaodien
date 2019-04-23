@@ -19,18 +19,20 @@ public class MainActivity extends AppCompatActivity {
     //su dung SharedPreference de lưu mat khau
     public static SharedPreferences shpf; //de luu tru du lieu
     public static SharedPreferences.Editor editor;//de mo file va dua du lieu vao
-
+    private final static String NAME ="savepass";
+    private final static String KEY="loginTest";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         //khoi tao mot doi tuong
-        shpf = getSharedPreferences("savepass", Context.MODE_PRIVATE);//luu vao file, va chi cho pheo ung dung truy nhap
+        shpf = getSharedPreferences(NAME, Context.MODE_PRIVATE);//luu vao file, va chi cho pheo ung dung truy nhap
         editor = shpf.edit();
-
-        str_login = shpf.getString("loginTest", null);
-
+        if(shpf.getString(KEY,"") != ""){
+            Intent mIntent = new Intent(MainActivity.this, DangNhapActivity.class);
+            startActivity(mIntent);
+        }
 
         button1=(Button) this.findViewById(R.id.btnSetMK);
         password = (EditText) findViewById(R.id.editSetMK);
@@ -41,10 +43,12 @@ public class MainActivity extends AppCompatActivity {
                 strPassword = password.getText().toString();
                 if(strPassword.length() != 6){
                     Toast.makeText(getApplicationContext(),"Mật khẩu gồm 6 chữ số", Toast.LENGTH_LONG);
+                    Intent mIntent = new Intent(MainActivity.this, MainActivity.class);
+                    startActivity(mIntent);
                 }
                 else {
-                    MainActivity.editor.putString("password",strPassword);
-                    MainActivity.editor.commit();
+                    editor.putString(KEY, strPassword);
+                    editor.apply();
                     Toast.makeText(getApplicationContext(), "CÀi đặt mật khẩu thành công", Toast.LENGTH_LONG).show();
                     //tao mot Intent mang noi dung gui den Nhap mat khau
                     Intent myIntent= new Intent(MainActivity.this,DangNhapActivity.class);
