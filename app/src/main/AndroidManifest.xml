@@ -32,7 +32,8 @@
         <activity
             android:name=".ThemNVActivity"
             android:noHistory="true" />
-        <activity android:name=".MenuActivity" />
+        <activity android:name=".MenuActivity"
+            android:noHistory="true"/>
         <activity
             android:name=".DangNhapActivity"
             android:noHistory="true" />

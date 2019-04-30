@@ -12,8 +12,6 @@ public class NhanVien {
         this.diaChi = diaChi;
         this.ngaySinh = ngaySinh;
         this.ngayBD = ngayBD;
-      //  this.luongCB = luongCB;
-       // this.anh= anh;
     }
 
     public NhanVien(int maNV, String tenNV, String sdt, String email, String diaChi, String ngaySinh, String ngayBD) {
@@ -24,17 +22,8 @@ public class NhanVien {
         this.diaChi = diaChi;
         this.ngaySinh = ngaySinh;
         this.ngayBD = ngayBD;
-     //   this.luongCB = luongCB;
-        //this.anh= anh;
     }
 
-//    public byte[] getAnh() {
-//        return anh;
-//    }
-
-    //public void setAnh(byte[] anh) {
-//        this.anh = anh;
-//    }
 
     public int getMaNV() {
         return maNV;
@@ -104,6 +93,5 @@ public class NhanVien {
                 ", ngayBD='" + ngayBD + '\'' +
                 '}';
     }
-
 
 }

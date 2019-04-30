@@ -41,7 +41,7 @@ public class NVOperations{
      //them nhan vien
      public void addNhanVien(NhanVien nhanVien){
          int id=1;
-        database.close();
+        //database.close();
          database = dbNhanVien.getReadableDatabase();
          Cursor cursor = database.rawQuery("SELECT max(" + DBNhanVien.COLUMN_ID + ") FROM " + DBNhanVien.TABLE_NAME,null);
          if(cursor != null && cursor.moveToFirst()){
