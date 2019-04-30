@@ -16,18 +16,26 @@ public class DBNhanVien extends SQLiteOpenHelper {
     public static final String COLUMN_ADDRESS ="diaChi";
     public static final String COLUMN_BIRTH ="ngaySinh";
     public static final String COLUMN_DATEBEGIN ="ngayBD";
-    public static final String COLUMN_LUONG ="luongCB";
-    //public static final String COLUMN_ANH ="anh";
+
 
 
     public DBNhanVien( Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.onCreate(this.getReadableDatabase());
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {//cần viết để tạo bảng
-        String sql= String.format("CREATE TABLE %s (%s INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT,%s TEXT,%s SNUERIC,%s INTEGER, %s REAL, %s TEXT)", TABLE_NAME, COLUMN_ID,COLUMN_NAME, COLUMN_SDT, COLUMN_ADDRESS, COLUMN_BIRTH, COLUMN_DATEBEGIN,COLUMN_LUONG,COLUMN_EMAIL );
+        String sql= "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ( "+ COLUMN_ID +" INTEGER " + " PRIMARY KEY," + COLUMN_NAME + " VARCHAR(40),"+ COLUMN_ADDRESS +" VARCHAR(40),"+ COLUMN_SDT +" VARCHAR(40),"+ COLUMN_BIRTH+" DATE,"+ COLUMN_DATEBEGIN+" DATE,"+ COLUMN_EMAIL+" VARCHAR(40))";
         db.execSQL(sql);//chay lenh tao bang
+      //  db.close();
+    }
+
+    public void DelTable()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME);
+        db.close();
     }
 
     @Override
@@ -35,7 +43,7 @@ public class DBNhanVien extends SQLiteOpenHelper {
     //huy bang cu neu no da ton tai
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME);
         //và tạo lại
-        onCreate(db);
+       onCreate(db);
     }
 
     //them nhan vien

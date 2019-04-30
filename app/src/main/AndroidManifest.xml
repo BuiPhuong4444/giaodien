@@ -9,31 +9,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SetValueActivity">
-
-        </activity>
-        <activity android:name=".TinhLuongActivity">
-
-        </activity>
-        <activity android:name=".DKLichLVActivity">
-
-        </activity>
-        <activity android:name=".TTinNVActivity">
-
-        </activity>
-        <activity android:name=".DSNVActivity">
-
-        </activity>
-        <activity android:name=".ThemNVActivity">
-
-        </activity>
-        <activity android:name=".MenuActivity">
-
-        </activity>
-        <activity android:name=".DangNhapActivity" android:noHistory="true">
-
-        </activity>
-        <activity android:name=".MainActivity" android:noHistory="true">
+        <activity android:name=".List2Activity"
+            android:noHistory="true"></activity>
+        <activity
+            android:name=".ListActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".SetValueActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".TinhLuongActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".DKLichLVActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".TTinNVActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".DSNVActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".ThemNVActivity"
+            android:noHistory="true" />
+        <activity android:name=".MenuActivity" />
+        <activity
+            android:name=".DangNhapActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".MainActivity"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

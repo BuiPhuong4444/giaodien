@@ -22,6 +22,7 @@ public class DangNhapActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_nhap);
+
         btn2= (Button)this.findViewById(R.id.button2);
         edtPassword = (EditText) this.findViewById(R.id.editText3);
         sharedPreferences = getSharedPreferences(NAME, Context.MODE_PRIVATE);

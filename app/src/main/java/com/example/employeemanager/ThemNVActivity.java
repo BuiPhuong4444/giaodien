@@ -1,50 +1,41 @@
 package com.example.employeemanager;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.io.ByteArrayOutputStream;
+import com.example.employeemanager.Database.NVOperations;
+import com.example.employeemanager.model.NhanVien;
+
 import java.util.Calendar;
 
 public class ThemNVActivity extends Activity {
 
-    EditText edtHoTen, edtSDT, edtEmail, edtDChi, edtNSinh, edtNgayBD, edtLuongCB;
+    Context context;
+    EditText edtHoTen, edtSDT, edtEmail, edtDChi, edtNSinh, edtNgayBD;
     DatePickerDialog datePickerDialog;
-//    ImageView imgAnh;
-//    byte[] anh;
-    String hoTen, sdt, email, diaChi, NSinh, NgayBD, LuongCB;
+    private NVOperations nvOperations;
+
+    String hoTen, sdt, email, diaChi, NSinh, NgayBD;
     final String DATABASE_NAME= "employeeManager";
-     //bien tu tang ma NV
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_nv);
-
+        this.context = this;
         edtHoTen = (EditText) this.findViewById(R.id.editText2);
-        hoTen =  edtHoTen.getText().toString();
-
         edtSDT = (EditText) this.findViewById(R.id.editText4);
-        sdt= edtSDT.getText().toString();
-
         edtDChi = (EditText)this.findViewById(R.id.editText6);
-        diaChi = edtDChi.getText().toString();
-
         edtEmail = (EditText)this.findViewById(R.id.editText5);
-        email = edtEmail.getText().toString();
-
         edtNSinh =(EditText) this.findViewById(R.id.editText7);
-      //  NSinh = edtNSinh.getText().toString();
         //click chọn ngày sinh
         edtNSinh.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +56,7 @@ public class ThemNVActivity extends Activity {
                 datePickerDialog.show();
             }
         });
+
 
         edtNgayBD = (EditText)this.findViewById(R.id.editText8);
        // NgayBD = edtNgayBD.getText().toString();
@@ -89,15 +81,10 @@ public class ThemNVActivity extends Activity {
             }
         });
 
-        edtLuongCB = (EditText)this.findViewById(R.id.editText9);
-        LuongCB= edtLuongCB.getText().toString();
 
-//        imgAnh= (ImageView) this.findViewById(R.id.imageView);
-//        anh = ConverttoArrayByte(imgAnh) ;
+        //edtLuongCB = (EditText)this.findViewById(R.id.editText9);
 
 
-
-//
 
         //chuyen den man hinh Menu khi Khong them
         Button btn4= (Button) this.findViewById(R.id.button4);
@@ -111,32 +98,38 @@ public class ThemNVActivity extends Activity {
 //
 //        //xu ly khi button THEM
 
-//        Button btn3= (Button) this.findViewById(R.id.button3);
-//        btn3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //xu ly thong tin dau vao
-//                if(hoTen.length()==0){//nếu không nhập họ tên không cho thêm
-//                    Toast.makeText(ThemNVActivity.this,"Nhập tên nhân viên",Toast.LENGTH_LONG).show();
-//                }
-//                else {
-//
-//                    //them du lieu vao DB
-//
-//                    //hien thi thong bao khi them thanh cong su dung TOAST
-//                    Toast.makeText(ThemNVActivity.this, "Đã thêm thành công!", Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        });
+        Button btn3= (Button) this.findViewById(R.id.button3);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //xu ly thong tin dau vao
+                hoTen =  edtHoTen.getText().toString();
+                sdt= edtSDT.getText().toString();
+                email = edtEmail.getText().toString();
+                NSinh = edtNSinh.getText().toString();
+                NgayBD = edtNgayBD.getText().toString();
+                diaChi = edtDChi.getText().toString();
+                if(hoTen.isEmpty() || sdt.isEmpty() || diaChi.isEmpty() || NgayBD.isEmpty() ){//nếu không nhập họ tên không cho thêm
+                    Toast.makeText(ThemNVActivity.this,"Nhập tên nhân viên",Toast.LENGTH_LONG).show();
+                }
+                else {
+
+                    //them du lieu vao DB
+                    NhanVien nhanVien= new NhanVien(hoTen,sdt,diaChi,NSinh,NgayBD,email);
+                    NVOperations nvOperations = new NVOperations(context);
+                    nvOperations.addNhanVien(nhanVien);
+                    nvOperations.close();
+                    //hien thi thong bao khi them thanh cong su dung TOAST
+                    Toast.makeText(ThemNVActivity.this, "Đã thêm thành công!", Toast.LENGTH_LONG).show();
+                    Intent intent5= new Intent(ThemNVActivity.this, MenuActivity.class);
+                    ThemNVActivity.this.startActivity(intent5);
+                }
+
+            }
+        });
     }
 
-//    //hàm chuyển đổi từ kiểu bitmap sang byte[] để lưu vào DB
 
-//    protected byte[] ConverttoArrayByte(ImageView img){
-//        BitmapDrawable bitmapDrawable= (BitmapDrawable)img.getDrawable();
-//        Bitmap bitmap = bitmapDrawable.getBitmap();
-//        ByteArrayOutputStream stream= new ByteArrayOutputStream();
-//        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-//        return stream.toByteArray();
-//    }
+
+
 }
